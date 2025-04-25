@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasith Shavinda - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary: #6D28D9;
+            --secondary: #4C1D95;
+            --dark: #111827;
+            --darker: #0F172A;
+            --light: #F3F4F6;
+            --accent: #8B5CF6;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #6D28D9, #8B5CF6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease-in-out;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle at center, var(--dark) 0%, var(--darker) 100%);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-left: 3px solid var(--accent);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: var(--accent);
+        }
+        
+        .section-heading {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+        }
+        
+        .progress-bar {
+            position: relative;
+            height: 8px;
+            background: #1F2937;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 8px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+        
+        .glow {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.8);
+        }
+        
+        /* Mobile nav */
+        .mobile-nav {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            
+        }
+        
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+        
+        /* Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+        
+        .cursor-follower {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor hidden md:block"></div>
+    <div class="cursor-follower hidden md:block"></div>
+
+    <!-- Nav -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-filter backdrop-blur-lg z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#home" class="flex items-center space-x-2">
+                    <span class="text-2xl font-bold gradient-text">Hasith Shavinda</span>
+                    <span class="text-lg font-medium text-white"></span>
+                </a>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white transition">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white transition">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white transition">Contact</a>
+                </div>
+                
+                <!-- Mobile Nav Button -->
+                <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Nav Menu -->
+        <div class="mobile-nav fixed top-0 right-0 h-full w-64 bg-gray-900 shadow-lg z-50 p-5 flex flex-col justify-start items-start" id="mobile-nav-menu">  
+            <div class="w-full flex justify-end mb-6">
+                <button class="text-white focus:outline-none" id="close-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-6 w-full">
+                <a href="#home" class="text-gray-300 hover:text-white transition py-2 border-b border-gray-800">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition py-2 border-b border-gray-800">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-white transition py-2 border-b border-gray-800">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-white transition py-2 border-b border-gray-800">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition py-2 border-b border-gray-800">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 slide-in-left">
+                        Hi, I'm <span class="gradient-text">Hasith Shavinda</span>
+                    </h1>
+                    <div class="h-12 overflow-hidden">
+                        <div class="typewriter-container">
+                            <h2 class="text-xl md:text-2xl lg:text-3xl font-medium mb-6 text-gray-300 typewriter">Web Developer</h2>
+                        </div>
+                    </div>
+                    <p class="text-lg text-gray-400 mb-8 mt-6 slide-in-left">
+                        I'm an undergraduate student at Cardiff Metropolitan University specializing in web development and programming.
+                    </p>
+                    <div class="flex space-x-4 slide-in-left">
+                        <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 glow">
+                            My Work
+                        </a>
+                        <a href="#contact" class="px-6 py-3 bg-transparent border-2 border-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-purple-600 to-purple-900 shadow-xl floating slide-in-right">
+                        <img src="1st.jpg" alt="Hasith Shavinda" class="w-full h-full rounded-full object-cover p-2">
+                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-gray-900 rounded-full flex items-center justify-center shadow-lg">
+                            <span class="text-lg font-semibold gradient-text">Web Dev</span>
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-gray-900 rounded-full flex items-center justify-center shadow-lg">
+                            <span class="text-lg font-semibold gradient-text">React</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="section-heading">About Me</span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 mb-10 md:mb-0 fade-in">
+                    <div class="relative">
+                        <div class="w-full md:w-3/4 h-64 md:h-80 bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                            <img src="dd.png" alt="Hasith Shavinda" class="w-full h-full object-cover">
+                        </div>
+                        <!------
+                        <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-gradient-to-br from-purple-600 to-purple-900 rounded-lg shadow-xl p-4 hidden md:flex items-center justify-center">
+                            <p class="text-white text-center font-semibold">Turning ideas into reality with code</p>
+                        </div>
+                        --->
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 fade-in">
+                    <h3 class="text-2xl font-bold mb-4 text-white">I'm an Undergraduate Student at Cardiff Metropolitan University</h3>
+                    <p class="text-gray-300 mb-6">
+                        From Walasmulla, Sri Lanka, I'm passionate about web development and programming. I've completed an OTHM International Diploma in ICT at the International College of Business and Technology and now pursuing my studies further.
+                    </p>
+                    <p class="text-gray-300 mb-6">
+                        I'm constantly expanding my skills and knowledge in various programming languages and technologies. Currently working on several projects and assignments to apply my skills in real-world scenarios.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-purple-500 mr-2"></i>
+                            <span class="text-gray-300">Walasmulla, Sri Lanka</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-purple-500 mr-2"></i>
+                            <span class="text-gray-300">Cardiff Metropolitan University</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-purple-500 mr-2"></i>
+                            <span class="text-gray-300">hasithshavinda@<br>icloud.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-briefcase text-purple-500 mr-2"></i>
+                            <span class="text-gray-300">Web Developer</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/hasith-shavinda-75441a34b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="social-icon">
+                            <i class="fab fa-linkedin text-2xl text-gray-300 hover:text-purple-500 transition-colors"></i>
+                        </a>
+                        <a href="https://github.com/hasithshavinda918" class="social-icon">
+                            <i class="fab fa-github text-2xl text-gray-300 hover:text-purple-500 transition-colors"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100018454982139&mibextid=wwXIfr&mibextid=wwXIfr" class="social-icon">
+                            <i class="fab fa-facebook text-2xl text-gray-300 hover:text-purple-500 transition-colors"></i>
+                        </a>
+                        <a href="https://www.instagram.com/hasith_.shavinda/" class="social-icon">
+                            <i class="fab fa-instagram text-2xl text-gray-300 hover:text-purple-500 transition-colors"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="section-heading">My Skills</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-6 text-white">Technical Skills</h3>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-300 font-medium">HTML & CSS</span>
+                            <span class="text-gray-400">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-300 font-medium">JavaScript</span>
+                            <span class="text-gray-400">85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-300 font-medium">React</span>
+                            <span class="text-gray-400">80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-300 font-medium">Tailwind CSS</span>
+                            <span class="text-gray-400">85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-300 font-medium">SQL</span>
+                            <span class="text-gray-400">70%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-300 font-medium">Java</span>
+                            <span class="text-gray-400">40%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="60%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-300 font-medium">Python</span>
+                            <span class="text-gray-400">65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="65%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-300 font-medium">C++</span>
+                            <span class="text-gray-400">75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-6 text-white">Other Skills</h3>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Web Design</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>UI/UX Design</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Version Control (Git)</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Project Management</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Database Design</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Copywriting</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Translating</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Photo Editing</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Modern Web Animations</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Problem Solving</span>
+                        </div>
+                        <div class="skill-pill bg-gray-700 hover:bg-purple-700 text-white px-4 py-2 rounded-full transition-colors">
+                            <span>Teamwork</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Education</h3>
+                        
+                        <div class="mb-6 p-4 bg-gray-900 rounded-lg shadow-lg">
+                            <h4 class="text-xl font-semibold text-white">Cardiff Metropolitan University</h4>
+                            <p class="text-gray-400">Undergraduate Student</p>
+                            <p class="text-gray-500 text-sm">2023 - Present</p>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-900 rounded-lg shadow-lg">
+                            <h4 class="text-xl font-semibold text-white">International College of Business and Technology</h4>
+                            <p class="text-gray-400">OTHM International Diploma in ICT</p>
+                            <p class="text-gray-500 text-sm">2021 - 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="section-heading">My Projects</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg fade-in">
+                    <div class="h-48 overflow-hidden">
+                        <img src="p1.png" alt="Walasmulla National School Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Walasmulla National School Website</h3>
+                        <p class="text-gray-400 mb-4">
+                            A responsive school website with sections for News, Events, Vision & Mission using modern transitions and animations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">HTML</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">CSS</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">JavaScript</span>
+                        </div>
+                        <a href="#" class="inline-block px-4 py-2 bg-purple-600 text-white font-medium text-sm rounded hover:bg-purple-700 transition-colors">
+                            View Project
+                        </a>
+                    </div>
+                </div>  -->
+                
+                <!-- Project 2 
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg fade-in">
+                    <div class="h-48 overflow-hidden">
+                        <img src="p2.png" alt="Portfolio Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Portfolio Website</h3>
+                        <p class="text-gray-400 mb-4">
+                            A personal portfolio website built with React.js featuring a dark theme and animated elements.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">React.js</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">CSS</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">JavaScript</span>
+                        </div>
+                        <a href="#" class="inline-block px-4 py-2 bg-purple-600 text-white font-medium text-sm rounded hover:bg-purple-700 transition-colors">
+                            View Project
+                        </a>
+                    </div>
+                </div> -->
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg fade-in">
+                    <div class="h-48 overflow-hidden">
+                        <img src="p3.png" alt="Salon Hashi Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Salon Hashi Website</h3>
+                        <p class="text-gray-400 mb-4">
+                            A salon website built with HTML, CSS, JavaScript, and Tailwind CSS via CDN.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">HTML</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">CSS</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">JavaScript</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">Tailwind CSS</span>
+                        </div>
+                        <a href="https://github.com/hasithshavinda918/TailWind-SalonWeb" class="inline-block px-4 py-2 bg-purple-600 text-white font-medium text-sm rounded hover:bg-purple-700 transition-colors">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg fade-in">
+                    <div class="h-48 overflow-hidden">
+                        <img src="p4.png" alt="Orchi-flora Temperature Analysis System" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Orchi-flora Temperature Analysis System</h3>
+                        <p class="text-gray-400 mb-4">
+                            A C++ system for monitoring temperature data for orchid growth.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">C++</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">Data Analysis</span>
+                        </div>
+                        <a href="https://github.com/hasithshavinda918/Temperature-Analysis-System" class="inline-block px-4 py-2 bg-purple-600 text-white font-medium text-sm rounded hover:bg-purple-700 transition-colors">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 5 
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg fade-in">
+                    <div class="h-48 overflow-hidden">
+                        <img src="p5.png" alt="Mail Com Database Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Mail Com Database Project</h3>
+                        <p class="text-gray-400 mb-4">
+                            A database project for a mailing system for Infor Pvt Ltd.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">SQL</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">Database Design</span>
+                        </div>
+                        <a href="#" class="inline-block px-4 py-2 bg-purple-600 text-white font-medium text-sm rounded hover:bg-purple-700 transition-colors">
+                            View Project
+                        </a>
+                    </div>
+                </div> -->
+                
+                <!-- Project 6 
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg fade-in">
+                    <div class="h-48 overflow-hidden">
+                        <img src="p6.png" alt="Pixframe Business Plan" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Pixframe Business Plan</h3>
+                        <p class="text-gray-400 mb-4">
+                            A business plan for a photo editing and framing business.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">Business Planning</span>
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-700 text-gray-300 rounded">Photo Editing</span>
+                        </div>
+                        <a href="#" class="inline-block px-4 py-2 bg-purple-600 text-white font-medium text-sm rounded hover:bg-purple-700 transition-colors">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="section-heading">Get In Touch</span>
+            </h2>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="w-full md:w-1/2 fade-in">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="bg-gray-900 p-8 rounded-lg shadow-lg">
+                        <input type="hidden" name="access_key" value="3ef97c1d-50f8-4b85-bcc5-97d49ccabaf0">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-300 font-medium mb-2">Name</label>
+                            <input type="text" id="name" name ="name" class="w-full bg-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-300 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name = "email" class="w-full bg-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-300 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" name = "subject" class="w-full bg-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full bg-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-purple-800 text-white font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 glow">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="w-full md:w-1/2 fade-in">
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Contact Information</h3>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="mr-4 bg-gray-800 p-3 rounded-full">
+                                <i class="fas fa-map-marker-alt text-purple-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-1">Location</h4>
+                                <p class="text-gray-400">Walasmulla, Sri Lanka</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="mr-4 bg-gray-800 p-3 rounded-full">
+                                <i class="fas fa-envelope text-purple-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-1">Email</h4>
+                                <p class="text-gray-400">hasithshavinda@icloud.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="mr-4 bg-gray-800 p-3 rounded-full">
+                                <i class="fas fa-phone text-purple-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-1">Phone</h4>
+                                <p class="text-gray-400">+94 76 408 3967</p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold mb-4 text-white mt-10">Follow Me</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/hasith-shavinda-75441a34b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="bg-gray-800 p-3 rounded-full text-purple-500 hover:bg-purple-700 hover:text-white transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/hasithshavinda918" class="bg-gray-800 p-3 rounded-full text-purple-500 hover:bg-purple-700 hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=100018454982139&mibextid=wwXIfr&mibextid=wwXIfr" class="bg-gray-800 p-3 rounded-full text-purple-500 hover:bg-purple-700 hover:text-white transition-colors">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/hasith_.shavinda/" class="bg-gray-800 p-3 rounded-full text-purple-500 hover:bg-purple-700 hover:text-white transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Customer Reviews Section with Submission Form -->
+<section class="py-20 bg-gray-900">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+            <span class="section-heading">Customer Reviews</span>
+        </h2>
+        
+        <!-- Reviews Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="reviews-container">
+            <!-- Existing reviews will be loaded here dynamically -->
+            
+            <!-- Sample review (will be replaced by saved reviews) -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-xl font-bold text-white mr-4">
+                        JD
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-white">John Doe</h4>
+                        <p class="text-gray-400 text-sm">CEO, TechStart</p>
+                    </div>
+                </div>
+                <div class="mb-4 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="text-gray-300">
+                    "Hasith created an exceptional website for our business. His attention to detail and ability to understand our needs resulted in a site that exceeded our expectations. Highly recommended!"
+                </p>
+            </div>
+        </div>
+        
+        <!-- Add Review Form -->
+        <div class="max-w-xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg fade-in">
+            <h3 class="text-2xl font-bold mb-6 text-white">Leave a Review</h3>
+            
+            <form id="review-form" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="review-name" class="block text-gray-300 font-medium mb-2">Your Name</label>
+                        <input type="text" id="review-name" class="w-full bg-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
+                    </div>
+                    <div>
+                        <label for="review-position" class="block text-gray-300 font-medium mb-2">Position/Company</label>
+                        <input type="text" id="review-position" class="w-full bg-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-300 font-medium mb-2">Rating</label>
+                    <div class="flex space-x-2 text-2xl">
+                        <span class="star-rating cursor-pointer text-gray-500 hover:text-yellow-400" data-rating="1">
+                            <i class="far fa-star"></i>
+                        </span>
+                        <span class="star-rating cursor-pointer text-gray-500 hover:text-yellow-400" data-rating="2">
+                            <i class="far fa-star"></i>
+                        </span>
+                        <span class="star-rating cursor-pointer text-gray-500 hover:text-yellow-400" data-rating="3">
+                            <i class="far fa-star"></i>
+                        </span>
+                        <span class="star-rating cursor-pointer text-gray-500 hover:text-yellow-400" data-rating="4">
+                            <i class="far fa-star"></i>
+                        </span>
+                        <span class="star-rating cursor-pointer text-gray-500 hover:text-yellow-400" data-rating="5">
+                            <i class="far fa-star"></i>
+                        </span>
+                    </div>
+                    <input type="hidden" id="review-rating" value="0" required>
+                </div>
+                
+                <div>
+                    <label for="review-text" class="block text-gray-300 font-medium mb-2">Your Review</label>
+                    <textarea id="review-text" rows="4" class="w-full bg-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required></textarea>
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-purple-800 text-white font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 glow">
+                    Submit Review
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Review System -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load existing reviews
+        loadReviews();
+        
+        // Star rating functionality
+        const starRatings = document.querySelectorAll('.star-rating');
+        starRatings.forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = parseInt(this.getAttribute('data-rating'));
+                document.getElementById('review-rating').value = rating;
+                
+                // Update star appearance
+                starRatings.forEach(s => {
+                    const starRating = parseInt(s.getAttribute('data-rating'));
+                    if (starRating <= rating) {
+                        s.innerHTML = '<i class="fas fa-star"></i>';
+                        s.classList.add('text-yellow-400');
+                        s.classList.remove('text-gray-500');
+                    } else {
+                        s.innerHTML = '<i class="far fa-star"></i>';
+                        s.classList.add('text-gray-500');
+                        s.classList.remove('text-yellow-400');
+                    }
+                });
+            });
+        });
+        
+        // Form submission
+        const reviewForm = document.getElementById('review-form');
+        reviewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('review-name').value;
+            const position = document.getElementById('review-position').value;
+            const rating = parseInt(document.getElementById('review-rating').value);
+            const text = document.getElementById('review-text').value;
+            
+            // Validate form
+            if (!name || !position || rating === 0 || !text) {
+                alert('Please fill out all fields and select a rating');
+                return;
+            }
+            
+            // Create review object
+            const review = {
+                name: name,
+                position: position,
+                rating: rating,
+                text: text,
+                initials: getInitials(name),
+                date: new Date().toISOString()
+            };
+            
+            // Save review
+            saveReview(review);
+            
+            // Reset form
+            reviewForm.reset();
+            starRatings.forEach(s => {
+                s.innerHTML = '<i class="far fa-star"></i>';
+                s.classList.add('text-gray-500');
+                s.classList.remove('text-yellow-400');
+            });
+            document.getElementById('review-rating').value = 0;
+            
+            // Show success message
+            alert('Thank you for your review!');
+        });
+    });
+    
+    // Get initials from name
+    function getInitials(name) {
+        return name
+            .split(' ')
+            .map(word => word.charAt(0))
+            .join('')
+            .toUpperCase();
+    }
+    
+    // Save review to localStorage
+    function saveReview(review) {
+        let reviews = JSON.parse(localStorage.getItem('portfolio-reviews')) || [];
+        reviews.unshift(review); // Add new review at the beginning
+        localStorage.setItem('portfolio-reviews', JSON.stringify(reviews));
+        
+        // Reload reviews
+        loadReviews();
+    }
+    
+    // Load reviews from localStorage
+    function loadReviews() {
+        const reviewsContainer = document.getElementById('reviews-container');
+        let reviews = JSON.parse(localStorage.getItem('portfolio-reviews')) || [];
+        
+        // If no saved reviews, keep sample review
+        if (reviews.length === 0) return;
+        
+        // Clear container
+        reviewsContainer.innerHTML = '';
+        
+        // Add reviews to container
+        reviews.forEach(review => {
+            const reviewElement = createReviewElement(review);
+            reviewsContainer.appendChild(reviewElement);
+        });
+        
+        // Initialize fade animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(element => {
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    appearOnScroll.unobserve(entry.target);
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -100px 0px"
+            });
+            
+            appearOnScroll.observe(element);
+        });
+    }
+    
+    // Create review HTML element
+    function createReviewElement(review) {
+        const reviewDiv = document.createElement('div');
+        reviewDiv.className = 'bg-gray-800 rounded-lg p-6 shadow-lg fade-in';
+        
+        let starsHTML = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= review.rating) {
+                starsHTML += '<i class="fas fa-star"></i>';
+            } else if (i - 0.5 === review.rating) {
+                starsHTML += '<i class="fas fa-star-half-alt"></i>';
+            } else {
+                starsHTML += '<i class="far fa-star"></i>';
+            }
+        }
+        
+        reviewDiv.innerHTML = `
+            <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-xl font-bold text-white mr-4">
+                    ${review.initials}
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white">${review.name}</h4>
+                    <p class="text-gray-400 text-sm">${review.position}</p>
+                </div>
+            </div>
+            <div class="mb-4 text-yellow-400">
+                ${starsHTML}
+            </div>
+            <p class="text-gray-300">
+                "${review.text}"
+            </p>
+        `;
+        
+        return reviewDiv;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="py-10 bg-gray-900">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="flex items-center space-x-2">
+                        <span class="text-2xl font-bold gradient-text"></span>
+                        <span class="text-lg font-medium text-white">Hasith Shavinda</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">Web Developer & Programmer</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-10">
+                    <a href="#home" class="text-gray-300 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition">Projects</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            
+            <hr class="border-gray-800 my-6">
+            
+            <div class="text-center">
+                <p class="text-gray-400">&copy; 2025 Hasith Shavinda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', function(e) {
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = x + 'px';
+                cursorFollower.style.top = y + 'px';
+            }, 100);
+        });
+        
+        // Mobile navigation
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileNavMenu = document.getElementById('mobile-nav-menu');
+        const mobileNavLinks = mobileNavMenu.querySelectorAll('a');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNavMenu.classList.add('active');
+        });
+        
+        closeMenuButton.addEventListener('click', () => {
+            mobileNavMenu.classList.remove('active');
+        });
+        
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavMenu.classList.remove('active');
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+            }
+        });
+        
+        // Typewriter effect
+        const typewriterTexts = [
+            'Web Developer',
+            'UI/UX Designer',
+            'Programmer',
+            'Student'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingDelay = 100;
+        
+        function typeWriter() {
+            const currentText = typewriterTexts[textIndex];
+            const typewriterElement = document.querySelector('.typewriter');
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                typingDelay = 50;
+            } else {
+                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typingDelay = 100;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                typingDelay = 1500; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % typewriterTexts.length;
+                typingDelay = 500; // Pause before typing next
+            }
+            
+            setTimeout(typeWriter, typingDelay);
+        }
+        
+        // Start the typewriter effect
+        setTimeout(typeWriter, 1000);
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+        const progressBars = document.querySelectorAll('.progress-fill');
+        
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -100px 0px"
+        };
+        
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                appearOnScroll.unobserve(entry.target);
+            });
+        }, appearOptions);
+        
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+        
+        const progressOptions = {
+            threshold: 0.5,
+            rootMargin: "0px"
+        };
+        
+        const progressOnScroll = new IntersectionObserver(function(entries, progressOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const element = entry.target;
+                const width = element.getAttribute('data-width');
+                element.style.width = width;
+                progressOnScroll.unobserve(element);
+            });
+        }, progressOptions);
+        
+        progressBars.forEach(bar => {
+            progressOnScroll.observe(bar);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
