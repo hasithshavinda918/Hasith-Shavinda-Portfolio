@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hasith Shavinda – Portfolio (Next.js + Tailwind)
 
-## Getting Started
+A modern, minimalist black & white portfolio built with Next.js (App Router), React, TypeScript, and Tailwind CSS. Optimized for static export, so it can be hosted easily on shared hosting (cPanel) without a Node.js runtime.
 
-First, run the development server:
+- Location: `D:\latest portfolio\portfolio`
+- Stack: Next.js 16, React 19, TypeScript 5, Tailwind CSS 4, Tabler Icons, ESLint 9, Prettier 3
 
-```bash
+Live:
+- Portfolio: https://www.hasithkarunarathne.me
+- Projects showcased:
+	- D&T Job Agency – https://www.dandtjobagency.com
+	- Lanka Tour Gate (FYP) – https://lankatourgate.free.nf/index.php
+
+## Features
+
+- Clean black & white minimal UI, responsive across devices
+- Sections: Hero, About, Skills, Projects, Content, Education, Contact
+- Contact form with EmailJS; graceful mailto fallback if env keys are missing
+- Static export for simple shared-hosting deployment (no server required)
+- Tabler Icons with explicit light/dark contrast handling
+
+## Getting Started (Dev)
+
+```powershell
+# from the project folder
+cd "D:\latest portfolio\portfolio"
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 to view the app. Edit `src/app/page.tsx` or components under `src/components/`; the page auto-refreshes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` – Start dev server at http://localhost:3000
+- `npm run build` – Static export build to `out/` (see config)
+- `npm run start` – Start production server (not needed for static hosting)
+- `npm run lint` – Run ESLint
+- `npm run format` – Format with Prettier
+- `npm run format:check` – Check formatting
 
-## Learn More
+## EmailJS setup (optional)
 
-To learn more about Next.js, take a look at the following resources:
+1) Copy `.env.local.example` to `.env.local` and fill values from your EmailJS dashboard:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=...
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=...
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2) Ensure your EmailJS template expects: `user_name`, `user_email`, `subject`, `message`. If these are missing at runtime, the site falls back to a `mailto:` link so users can still contact you.
 
-## Deploy on Vercel
+## Build and Static Export
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is configured for static export in `next.config.ts`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `output: "export"`
+- `images: { unoptimized: true }`
+
+Build the static site:
+
+```powershell
+cd "D:\latest portfolio\portfolio"
+npm run build
+```
+
+The generated static site will be in the `out/` folder.
+
+## Deploy to cPanel (Shared Hosting)
+
+1) Build (see above) to produce `out/`.
+2) Zip the contents of `out/` (files inside, not the folder itself).
+3) Upload to your domain’s document root (e.g., `public_html/` or `public_html/yourdomain/`).
+4) Ensure `index.html` is at the root of that directory.
+5) (Optional) Force HTTPS via `.htaccess` if needed.
+
+## Project Structure Highlights
+
+- `src/app/page.tsx` – page composition using the App Router
+- `src/components/*` – UI building blocks (Navbar, Hero, About, Skills, Projects, Content, Education, Contact, Footer)
+- `src/data/site.ts` – central data (name, contact, CTA/CV path, skills, education)
+- `public/assets/*` – static images (logo, hero image, CV, etc.)
+- `next.config.ts` – static export configuration
+
+## License
+
+Personal portfolio project. All rights reserved.
