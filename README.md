@@ -11,6 +11,27 @@ Live:
 	- D&T Job Agency – https://www.dandtjobagency.com
 	- Lanka Tour Gate (FYP) – https://lankatourgate.free.nf/index.php
 
+## Repository Card
+
+[![Hasith-Shavinda-Portfolio](https://github-readme-stats.vercel.app/api/pin/?username=hasithshavinda918&repo=Hasith-Shavinda-Portfolio&theme=transparent)](https://github.com/hasithshavinda918/Hasith-Shavinda-Portfolio)
+
+<p>
+	<a href="https://github.com/hasithshavinda918/Hasith-Shavinda-Portfolio/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/hasithshavinda918/Hasith-Shavinda-Portfolio?style=flat&color=000&label=Stars"></a>
+	<a href="https://github.com/hasithshavinda918/Hasith-Shavinda-Portfolio/forks"><img alt="Forks" src="https://img.shields.io/github/forks/hasithshavinda918/Hasith-Shavinda-Portfolio?style=flat&color=000&label=Forks"></a>
+	<a href="https://github.com/hasithshavinda918/Hasith-Shavinda-Portfolio/issues"><img alt="Issues" src="https://img.shields.io/github/issues/hasithshavinda918/Hasith-Shavinda-Portfolio?style=flat&color=000&label=Issues"></a>
+</p>
+
+<p>
+	<img alt="Next.js" src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white">
+	<img alt="React" src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB">
+	<img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white">
+	<img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white">
+</p>
+
+### English Summary
+
+This repository contains my minimalist black-and-white developer portfolio. It’s built with Next.js 16 (App Router), React 19, and TypeScript, styled with Tailwind CSS, and designed for static export. The site showcases my profile, skills, and selected projects with a focus on clarity and performance. The contact section integrates EmailJS and gracefully falls back to a mailto link when environment keys are not present, making it suitable for shared hosting like cPanel.
+
 ## Features
 
 - Clean black & white minimal UI, responsive across devices
