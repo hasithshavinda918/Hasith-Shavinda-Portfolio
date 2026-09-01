@@ -29,5 +29,19 @@
     "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "description": "A modern, minimalist black & white portfolio built with Next.js (App Router), React, TypeScript, and Tailwind CSS. Optimized for static export, so it can be hosted easily on shared hosting (cPanel) without a Node.js runtime.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HasithKarunarathne/Hasith-Shavinda-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/HasithKarunarathne/Hasith-Shavinda-Portfolio/issues"
+  },
+  "homepage": "https://github.com/HasithKarunarathne/Hasith-Shavinda-Portfolio#readme"
 }

@@ -43,8 +43,8 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b-2 border-black bg-white shadow-lg dark:border-white dark:bg-black"
-          : "border-b border-neutral-200 bg-white/80 backdrop-blur-md dark:border-neutral-800 dark:bg-black/80"
+          ? "border-b border-white/10 glass-nav shadow-lg"
+          : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -55,17 +55,11 @@ export function Navbar() {
             className="group flex items-center gap-3 transition-transform hover:scale-105"
             onClick={() => setOpen(false)}
           >
-            <div className="relative h-10 w-10 overflow-hidden rounded-lg border-2 border-black dark:border-white lg:h-12 lg:w-12">
-              <Image
-                src="/assets/logo.png"
-                alt="Logo"
-                width={48}
-                height={48}
-                className="h-full w-full object-cover"
-              />
+            <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-white/20 lg:h-12 lg:w-12 shadow-[0_0_15px_rgba(188,19,254,0.3)]">
+              <Image src="/assets/logo.png" alt="Logo" fill className="object-cover" />
             </div>
-            <span className="hidden text-xl font-bold tracking-tight text-black dark:text-white sm:inline-block">
-              Hasith S Karunarathne
+            <span className="hidden text-xl font-bold tracking-tight text-white sm:inline-block">
+              Hasith Karunarathne
             </span>
           </Link>
 
@@ -75,10 +69,10 @@ export function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                className="group relative px-4 py-2 text-sm font-semibold text-neutral-700 transition-colors hover:text-black dark:text-neutral-300 dark:hover:text-white"
+                className="group relative px-4 py-2 text-sm font-medium text-neutral-300 transition-colors hover:text-white"
               >
                 <span className="relative z-10">{item.label}</span>
-                <span className="absolute inset-0 scale-0 rounded-lg bg-neutral-100 transition-transform group-hover:scale-100 dark:bg-neutral-900"></span>
+                <span className="absolute inset-0 scale-0 rounded-lg bg-white/10 transition-transform group-hover:scale-100"></span>
               </a>
             ))}
           </nav>
@@ -87,7 +81,7 @@ export function Navbar() {
           <div className="hidden items-center gap-3 lg:flex">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-lg bg-black px-5 py-2.5 text-sm font-bold text-white transition-all hover:scale-105 hover:shadow-lg dark:bg-white dark:text-black"
+              className="group inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-bold text-black transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
             >
               <IconSend size={16} />
               <span>Let&apos;s Talk</span>
@@ -97,7 +91,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg border-2 border-black text-black transition-all hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black lg:hidden"
+            className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 text-white transition-all hover:bg-white/10 lg:hidden"
             aria-label="Toggle navigation"
             onClick={() => setOpen(!open)}
           >
@@ -115,14 +109,14 @@ export function Navbar() {
             open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <nav className="border-t border-neutral-200 py-4 dark:border-neutral-800">
+          <nav className="border-t border-white/10 py-4 glass-nav rounded-b-2xl px-2">
             <div className="grid gap-1">
               {NAV.map((item, idx) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="group flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-neutral-700 transition-all hover:bg-black hover:text-white dark:text-neutral-300 dark:hover:bg-white dark:hover:text-black"
+                  className="group flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-neutral-300 transition-all hover:bg-white/10 hover:text-white"
                   style={{ animationDelay: `${idx * 50}ms` }}
                 >
                   <item.icon size={18} />
@@ -135,10 +129,10 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-black py-3 text-sm font-bold text-white transition-all hover:scale-105 dark:bg-white dark:text-black"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-white py-3 text-sm font-bold text-black transition-all hover:scale-105"
               >
                 <IconSend size={16} />
-                <span>Get In Touch</span>
+                <span>Let&apos;s Talk</span>
               </a>
             </div>
           </nav>

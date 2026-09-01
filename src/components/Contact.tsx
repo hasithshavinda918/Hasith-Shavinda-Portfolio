@@ -74,36 +74,36 @@ export function Contact() {
   };
 
   return (
-    <Section id="contact" title="Get In Touch" className="pt-8 sm:pt-10 pb-10 sm:pb-14">
+    <Section id="contact" title="Get In Touch" className="pt-8 sm:pt-10 pb-10 sm:pb-14 relative z-10">
       <div className="grid gap-10 lg:grid-cols-2">
         {/* Left: Channels */}
         <div className="space-y-6">
           <div className="space-y-3">
-            <h3 className="text-2xl font-extrabold text-black dark:text-white">Let&apos;s work together</h3>
-            <p className="text-neutral-600 dark:text-neutral-400">
+            <h3 className="text-2xl font-extrabold text-white">Let&apos;s work together</h3>
+            <p className="text-neutral-400">
               Choose a channel below or send me a message. I usually reply within a day.
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             {/* Email */}
-            <div className="card card-hover flex items-center gap-4 rounded-2xl p-5">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl border-2 border-black bg-white shadow-sm dark:border-white dark:bg-black">
-                <IconMail size={22} className="text-black dark:text-white" />
+            <div className="card card-hover flex items-center gap-4 rounded-3xl p-5 border border-white/10 bg-black/40 backdrop-blur-md glowing-border">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/20 bg-white/5 shadow-md">
+                <IconMail size={22} className="text-cyan-400" />
               </div>
               <div className="min-w-0 flex-1">
                 <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Email</div>
-                <div className="truncate font-bold text-black dark:text-white">{contact.email}</div>
+                <div className="truncate font-bold text-white">{contact.email}</div>
                 <div className="mt-3 flex gap-2">
                   <a
                     href={`mailto:${contact.email}`}
-                    className="inline-flex items-center gap-1 rounded-lg border-2 border-black px-3 py-1.5 text-xs font-bold text-black transition-colors hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black"
+                    className="inline-flex items-center gap-1 rounded-lg border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-white/10 hover:border-cyan-400"
                   >
                     <IconExternalLink size={14} /> Open
                   </a>
                   <button
                     onClick={() => copyToClipboard(contact.email)}
-                    className="inline-flex items-center gap-1 rounded-lg border-2 border-neutral-300 px-3 py-1.5 text-xs font-bold text-neutral-700 transition-colors hover:border-black hover:text-black dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-white dark:hover:text-white"
+                    className="inline-flex items-center gap-1 rounded-lg border border-white/20 bg-transparent px-3 py-1.5 text-xs font-bold text-neutral-300 transition-colors hover:border-white hover:text-white"
                   >
                     <IconCopy size={14} /> Copy
                   </button>
@@ -112,24 +112,24 @@ export function Contact() {
             </div>
 
             {/* WhatsApp */}
-            <div className="card card-hover flex items-center gap-4 rounded-2xl p-5">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl border-2 border-black bg-white shadow-sm dark:border-white dark:bg-black">
-                <IconBrandWhatsapp size={22} className="text-black dark:text-white" />
+            <div className="card card-hover flex items-center gap-4 rounded-3xl p-5 border border-white/10 bg-black/40 backdrop-blur-md glowing-border">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/20 bg-white/5 shadow-md">
+                <IconBrandWhatsapp size={22} className="text-green-400" />
               </div>
               <div className="min-w-0 flex-1">
                 <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">WhatsApp</div>
-                <div className="truncate font-bold text-black dark:text-white">Quick Chat</div>
+                <div className="truncate font-bold text-white">Quick Chat</div>
                 <div className="mt-3 flex gap-2">
                   <a
                     href={`https://wa.me/${contact.whatsapp.replace(/[^\d]/g, "")}`}
                     target="_blank"
-                    className="inline-flex items-center gap-1 rounded-lg border-2 border-black px-3 py-1.5 text-xs font-bold text-black transition-colors hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black"
+                    className="inline-flex items-center gap-1 rounded-lg border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-white/10 hover:border-green-400"
                   >
                     <IconExternalLink size={14} /> Open
                   </a>
                   <button
                     onClick={() => copyToClipboard(contact.whatsapp)}
-                    className="inline-flex items-center gap-1 rounded-lg border-2 border-neutral-300 px-3 py-1.5 text-xs font-bold text-neutral-700 transition-colors hover:border-black hover:text-black dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-white dark:hover:text-white"
+                    className="inline-flex items-center gap-1 rounded-lg border border-white/20 bg-transparent px-3 py-1.5 text-xs font-bold text-neutral-300 transition-colors hover:border-white hover:text-white"
                   >
                     <IconCopy size={14} /> Copy
                   </button>
@@ -138,18 +138,18 @@ export function Contact() {
             </div>
 
             {/* LinkedIn */}
-            <div className="card card-hover flex items-center gap-4 rounded-2xl p-5">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl border-2 border-black bg-white shadow-sm dark:border-white dark:bg-black">
-                <IconBrandLinkedin size={22} className="text-black dark:text-white" />
+            <div className="card card-hover flex items-center gap-4 rounded-3xl p-5 border border-white/10 bg-black/40 backdrop-blur-md glowing-border">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/20 bg-white/5 shadow-md">
+                <IconBrandLinkedin size={22} className="text-blue-500" />
               </div>
               <div className="min-w-0 flex-1">
                 <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">LinkedIn</div>
-                <div className="truncate font-bold text-black dark:text-white">Connect Professionally</div>
+                <div className="truncate font-bold text-white">Connect</div>
                 <div className="mt-3 flex gap-2">
                   <a
                     href={contact.linkedin}
                     target="_blank"
-                    className="inline-flex items-center gap-1 rounded-lg border-2 border-black px-3 py-1.5 text-xs font-bold text-black transition-colors hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black"
+                    className="inline-flex items-center gap-1 rounded-lg border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-white/10 hover:border-blue-500"
                   >
                     <IconExternalLink size={14} /> Open
                   </a>
@@ -158,18 +158,18 @@ export function Contact() {
             </div>
 
             {/* GitHub */}
-            <div className="card card-hover flex items-center gap-4 rounded-2xl p-5">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl border-2 border-black bg-white shadow-sm dark:border-white dark:bg-black">
-                <IconBrandGithub size={22} className="text-black dark:text-white" />
+            <div className="card card-hover flex items-center gap-4 rounded-3xl p-5 border border-white/10 bg-black/40 backdrop-blur-md glowing-border">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/20 bg-white/5 shadow-md">
+                <IconBrandGithub size={22} className="text-purple-400" />
               </div>
               <div className="min-w-0 flex-1">
                 <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">GitHub</div>
-                <div className="truncate font-bold text-black dark:text-white">View Projects</div>
+                <div className="truncate font-bold text-white">View Projects</div>
                 <div className="mt-3 flex gap-2">
                   <a
                     href={contact.github}
                     target="_blank"
-                    className="inline-flex items-center gap-1 rounded-lg border-2 border-black px-3 py-1.5 text-xs font-bold text-black transition-colors hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black"
+                    className="inline-flex items-center gap-1 rounded-lg border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-white/10 hover:border-purple-400"
                   >
                     <IconExternalLink size={14} /> Open
                   </a>
@@ -178,10 +178,10 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-xl border-2 border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-black">
-            <IconCircleCheck size={20} className="text-black dark:text-white" />
-            <div className="text-sm text-neutral-700 dark:text-neutral-300">
-              <span className="font-semibold text-black dark:text-white">{contact.status}</span>
+          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+            <IconCircleCheck size={20} className="text-cyan-400" />
+            <div className="text-sm text-neutral-300">
+              <span className="font-semibold text-white">{contact.status}</span>
               <span className="mx-2">•</span>
               {contact.responseTime}
             </div>
@@ -189,17 +189,17 @@ export function Contact() {
         </div>
 
         {/* Right: Form */}
-        <div className="rounded-3xl border-2 border-neutral-200 bg-white p-8 shadow-xl dark:border-neutral-800 dark:bg-black">
-          <h3 className="mb-6 text-2xl font-extrabold text-black dark:text-white">Send a message</h3>
+        <div className="rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md p-8 shadow-[0_0_30px_rgba(188,19,254,0.1)] glowing-border">
+          <h3 className="mb-6 text-2xl font-extrabold text-white">Send a message</h3>
           <form ref={formRef} onSubmit={onSubmit} className="space-y-5">
-            {/* Hidden routing for EmailJS (ensure template uses these) */}
+            {/* Hidden routing for EmailJS */}
             <input type="hidden" name="to_email" value="hasithshavinda918@gmail.com" />
-            <input type="hidden" name="to_name" value="Hasith S Karunarathne" />
+            <input type="hidden" name="to_name" value="Hasith Karunarathne" />
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Name</label>
                 <input
-                  className="w-full rounded-xl border-2 border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-black placeholder-neutral-400 outline-none transition-all focus:border-black dark:border-neutral-700 dark:bg-black dark:text-white dark:placeholder-neutral-500 dark:focus:border-white"
+                  className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm font-medium text-white placeholder-neutral-500 outline-none transition-all focus:border-cyan-400 focus:bg-white/10 focus:shadow-[0_0_15px_rgba(0,243,255,0.3)]"
                   name="user_name"
                   placeholder="Your Name"
                   required
@@ -208,7 +208,7 @@ export function Contact() {
               <div className="space-y-2">
                 <label className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Email</label>
                 <input
-                  className="w-full rounded-xl border-2 border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-black placeholder-neutral-400 outline-none transition-all focus:border-black dark:border-neutral-700 dark:bg-black dark:text-white dark:placeholder-neutral-500 dark:focus:border-white"
+                  className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm font-medium text-white placeholder-neutral-500 outline-none transition-all focus:border-cyan-400 focus:bg-white/10 focus:shadow-[0_0_15px_rgba(0,243,255,0.3)]"
                   type="email"
                   name="user_email"
                   placeholder="you@example.com"
@@ -219,7 +219,7 @@ export function Contact() {
             <div className="space-y-2">
               <label className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Subject</label>
               <input
-                className="w-full rounded-xl border-2 border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-black placeholder-neutral-400 outline-none transition-all focus:border-black dark:border-neutral-700 dark:bg-black dark:text-white dark:placeholder-neutral-500 dark:focus:border-white"
+                className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm font-medium text-white placeholder-neutral-500 outline-none transition-all focus:border-cyan-400 focus:bg-white/10 focus:shadow-[0_0_15px_rgba(0,243,255,0.3)]"
                 name="subject"
                 placeholder="How can I help?"
                 required
@@ -228,7 +228,7 @@ export function Contact() {
             <div className="space-y-2">
               <label className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Message</label>
               <textarea
-                className="min-h-32 w-full rounded-xl border-2 border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-black placeholder-neutral-400 outline-none transition-all focus:border-black dark:border-neutral-700 dark:bg-black dark:text-white dark:placeholder-neutral-500 dark:focus:border-white"
+                className="min-h-32 w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm font-medium text-white placeholder-neutral-500 outline-none transition-all focus:border-cyan-400 focus:bg-white/10 focus:shadow-[0_0_15px_rgba(0,243,255,0.3)]"
                 name="message"
                 placeholder="Write your message..."
                 required
@@ -236,7 +236,7 @@ export function Contact() {
             </div>
             <button
               disabled={sending}
-              className="group inline-flex items-center gap-2 rounded-xl border-2 border-black bg-black px-6 py-3 font-bold text-white transition-all hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 dark:border-white dark:bg-white dark:text-black"
+              className="group inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 font-bold text-black transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] disabled:opacity-50"
             >
               {sending ? (
                 <>
@@ -252,10 +252,10 @@ export function Contact() {
 
             {status && (
               <div
-                className={`rounded-xl border-2 p-4 text-center text-sm font-semibold ${
+                className={`rounded-xl border p-4 text-center text-sm font-semibold ${
                   status.type === "ok"
-                    ? "border-black bg-white text-black dark:border-white dark:bg-black dark:text-white"
-                    : "border-red-500 bg-white text-red-600 dark:border-red-500 dark:bg-black dark:text-red-300"
+                    ? "border-cyan-400 bg-cyan-400/10 text-cyan-300"
+                    : "border-red-500 bg-red-500/10 text-red-400"
                 }`}
               >
                 {status.msg}

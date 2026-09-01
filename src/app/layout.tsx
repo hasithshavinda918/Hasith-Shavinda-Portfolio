@@ -1,27 +1,17 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700"],
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-inter",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Hasith Shavinda | Portfolio",
+  title: "Hasith Karunarathne | Portfolio",
   description:
-    "Software Engineering Undergraduate • MERN Stack Specialist • React.js & Node.js • Based in Matara, Sri Lanka",
-  openGraph: {
-    title: "Hasith Shavinda | Portfolio",
-    description:
-      "Software Engineering Undergraduate • MERN Stack Specialist • React.js & Node.js • Based in Matara, Sri Lanka",
-    url: "https://example.com",
-    siteName: "Hasith Shavinda Portfolio",
-    locale: "en_US",
-    type: "website",
-  },
+    "IT Specialist & Full-Stack Developer",
 };
 
 export default function RootLayout({
@@ -30,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark scroll-smooth">
       <head></head>
-      <body className={`${poppins.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${inter.variable} font-sans antialiased bg-black text-white`}>{children}</body>
     </html>
   );
 }
